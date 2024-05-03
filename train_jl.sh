@@ -11,6 +11,7 @@
 #SBATCH --partition=a100-4
 
 source activate metaicl
+nvidia-smi
 
 cd ../Metaicl
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/mhong/li003755/.conda/envs/metaicl/lib/
