@@ -38,8 +38,8 @@ def main(logger, args):
     logger.info("batch_size=%d\tmax_length=%d\tmax_length_per_example=%d" % (
         args.batch_size, max_length, max_length_per_example))
 
-    train_data = load_data(args.task, "train", args.k, seed=args.seed)
-
+    train_data = load_data(args.task, "train", args.k, seed=args.seed, trun_len=args.trun_len)
+    
     train_counter = Counter()
     for dp in train_data:
         train_counter[dp["task"]] += 1
@@ -109,6 +109,7 @@ if __name__=='__main__':
     parser.add_argument("--k", type=int, default=16384)
     parser.add_argument("--test_k", type=int, default=16)
     parser.add_argument("--seed", type=int, default=100)
+    parser.add_argument("--trun_len", type=int, default=0)
     parser.add_argument("--train_seed", type=int, default=1)
     parser.add_argument("--lr", type=float, default=1e-5)
     parser.add_argument("--warmup_steps", type=int, default=0)
