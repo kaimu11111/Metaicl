@@ -72,9 +72,9 @@ def main(logger, args):
         torch.cuda.manual_seed_all(args.train_seed)
 
     num_training_steps = args.num_training_steps
-    save_period = 1000
+    save_period = 5000
     # save_period = 5000
-    log_period = 5000
+    log_period = 500
 
     if args.no_masking:
         metaicl_data.tensorized_inputs["token_type_ids"] = torch.ones_like(metaicl_data.tensorized_inputs["input_ids"])
