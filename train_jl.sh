@@ -18,8 +18,14 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/mhong/li003755/.conda/envs/metaicl
 task=threeSimTask
 python train.py \
   --task $task --k 16384 --test_k 16 --seed 100 --train_seed 1 --use_demonstrations --method channel --n_gpu 1 \
-  --batch_size 16 --lr 1e-2 --optimization 8bit-adam --out_dir checkpoints/channel-metaicl/$task \
-  --num_training_steps 1000
+  --batch_size 16 --lr 1e-5 --optimization 8bit-adam --out_dir checkpoints/channel-metaicl/$task \
+  --num_training_steps 10000
+
+# task=threeDiffTask
+# python train.py \
+#   --task $task --k 16384 --test_k 16 --seed 100 --train_seed 1 --use_demonstrations --method channel --n_gpu 1 \
+#   --batch_size 16 --lr 1e-5 --optimization 8bit-adam --out_dir checkpoints/channel-metaicl/$task \
+#   --num_training_steps 10000
 
 # --fp16
 exit

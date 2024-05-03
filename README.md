@@ -346,7 +346,3 @@ MetaICL is CC-BY-NC 4.0 licensed.
 [t0-paper]: https://arxiv.org/abs/2110.08207
 [t0-repo]: https://github.com/bigscience-workshop/promptsource
 
-#   M e t a i c l  
- #   M e t a i c l  
- #   M e t a i c l  
- 
