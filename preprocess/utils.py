@@ -25,7 +25,7 @@ def get_majority(lst):
 def load_configs():
     config_dict = {}
     for task in os.listdir("../config/tasks"):
-        if not task.startswith("unifiedqa:"):
+        if not task.startswith("unifiedqa:") and task.endswith(".json"): # quick fix
             with open(os.path.join("../config/tasks", task), "r") as f:
                 config = json.load(f)
             config_dict[task.split(".")[0]] = config
