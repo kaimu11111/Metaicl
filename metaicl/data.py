@@ -65,7 +65,7 @@ class MetaICLData(object):
             text += self.print_tensorized_example(return_string=True)
         return ("="*50) + "\n" + text + "\n" + ("="*50)
 
-    def get_dataloader(self, batch_size, is_training):
+    def get_dataloader(self, batch_size, is_training, num_samples=None):
         inputs = self.tensorized_inputs
         for k, v in inputs.items():
             if type(v)==list:
@@ -79,7 +79,10 @@ class MetaICLData(object):
         else:
             dataset = TensorDataset(inputs["input_ids"], inputs["attention_mask"], inputs["token_type_ids"])
         if is_training:
-            sampler=RandomSampler(dataset)
+            if num_samples:
+                sampler=RandomSampler(dataset, num_samples=num_samples)
+            else:
+                sampler=RandomSampler(dataset)
         else:
             sampler=SequentialSampler(dataset)
         dataloader = DataLoader(dataset, sampler=sampler, batch_size=batch_size)

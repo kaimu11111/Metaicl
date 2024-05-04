@@ -176,8 +176,8 @@ class MetaICLModel(object):
 
 
     def do_train(self, data, batch_size, num_training_steps, save_period, log_period,
-                 gradient_accumulation_steps=1, max_grad_norm=1.0):
-        dataloader = data.get_dataloader(batch_size, is_training=True)
+                 gradient_accumulation_steps=1, max_grad_norm=1.0, num_samples=None):
+        dataloader = data.get_dataloader(batch_size, is_training=True, num_samples=num_samples)
         n_trainable_params = len([param for param in self.model.parameters() if param.requires_grad])
         n_gpus = torch.cuda.device_count()
         self.logger.info("Training {} parameters on {} examples for {} steps using {} GPUs".format(

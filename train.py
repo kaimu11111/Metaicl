@@ -92,7 +92,7 @@ def main(logger, args):
                                   args.weight_decay, args.warmup_steps)
     metaicl_model.parallel()
     metaicl_model.train()
-    metaicl_model.do_train(metaicl_data, args.batch_size, num_training_steps, save_period, log_period)
+    metaicl_model.do_train(metaicl_data, args.batch_size, num_training_steps, save_period, log_period, args.num_samples)
 
 if __name__=='__main__':
 
@@ -115,6 +115,7 @@ if __name__=='__main__':
     parser.add_argument("--warmup_steps", type=int, default=0)
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_training_steps", type=int, default=30000)
+    parser.add_argument("--num_samples", type=int, default=None)
     parser.add_argument("--init_checkpoint", type=str, default=None)
     parser.add_argument("--weight_decay", type=float, default=0.0)
     parser.add_argument("--no_masking", default=False, action="store_true")
