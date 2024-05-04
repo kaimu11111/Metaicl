@@ -446,7 +446,7 @@ class MetaICLData(object):
                 assert 0<=self.local_rank<self.n_gpu
                 with open(tensorize_path % self.local_rank, "rb") as f:
                     inputs = pkl.load(f)
-
+                    
             self.tensorized_inputs = inputs
             return
 

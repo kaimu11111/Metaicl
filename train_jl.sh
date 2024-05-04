@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --time=2:00:00
+#SBATCH --time=6:00:00
 #SBATCH --nodes=1
 #SBATCH --mem=64gb
 #SBATCH --output=log/%j.out                              
