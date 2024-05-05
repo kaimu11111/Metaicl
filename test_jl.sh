@@ -26,7 +26,7 @@ echo "Test on threeDiffTask"
 task=threeDiffTask
 python test.py \
   --dataset ethos-directed_vs_generalized --k 16 --split test --seed 100 --use_demonstrations \
-  --test_batch_size 16 --method channel --out_dir checkpoints/direct-metaicl/threeSimTask --global_step 10000
+  --test_batch_size 16 --method channel --out_dir checkpoints/channel-metaicl/threeDiffTask --global_step 10000
 
 # --fp16
 exit
