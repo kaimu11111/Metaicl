@@ -175,8 +175,9 @@ class MetaICLModel(object):
                 self.model, device_ids=[self.local_rank], output_device=self.local_rank)
 
 
-    def do_train(self, data, batch_size, num_training_steps, save_period, log_period,
-                 gradient_accumulation_steps=1, max_grad_norm=1.0, num_samples=None):
+    def do_train(self, data, batch_size, num_training_steps, save_period, log_period, num_samples=None):
+        gradient_accumulation_steps=1
+        max_grad_norm=1.0
         dataloader = data.get_dataloader(batch_size, is_training=True, num_samples=num_samples)
         n_trainable_params = len([param for param in self.model.parameters() if param.requires_grad])
         n_gpus = torch.cuda.device_count()
@@ -216,10 +217,11 @@ class MetaICLModel(object):
                 else:
                     loss.backward()
 
+                print(f"global_step, gradient_accumulation_steps: {global_step}, {gradient_accumulation_steps}")
                 if global_step % gradient_accumulation_steps == 0:
                     torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_grad_norm)
 
-                    self.optimizer.step()    # We have accumulated enought gradients
+                    self.optimizer.step()    # We have accumulated enough gradients
                     if self.scheduler is not None:
                         self.scheduler.step()
                     self.model.zero_grad()
