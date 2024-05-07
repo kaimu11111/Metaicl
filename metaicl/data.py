@@ -431,7 +431,8 @@ class MetaICLData(object):
         else:
             self.logger.info(tensorize_path % self.local_rank)
         all_tensorize_paths = [tensorize_path % i for i in range(self.n_gpu)]
-
+        print(f"all_tensorize_paths: {all_tensorize_paths}")
+        
         if not self.do_tensorize:
             if not np.all([os.path.exists(_path) for _path in all_tensorize_paths]):
                 self.logger.info("Tensorization was not done. Run with `--do_tensorize` without distributed mode"
