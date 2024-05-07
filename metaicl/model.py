@@ -217,7 +217,7 @@ class MetaICLModel(object):
                 else:
                     loss.backward()
 
-                print(f"global_step, gradient_accumulation_steps: {global_step}, {gradient_accumulation_steps}")
+                # print(f"global_step, gradient_accumulation_steps: {global_step}, {gradient_accumulation_steps}")
                 if global_step % gradient_accumulation_steps == 0:
                     torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_grad_norm)
 
