@@ -196,6 +196,7 @@ def run(logger, task, metaicl_data, metaicl_model, train_data, dev_data, seed,
     else:
         if metaicl_model.is_none():
             metaicl_model.load(checkpoint, gpt2=args.gpt2)
+            # metaicl_model.load(None, gpt2=args.gpt2)
             metaicl_model.cuda()
             metaicl_model.eval()
 

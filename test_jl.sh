@@ -8,7 +8,7 @@
 #SBATCH --job-name=metaicl
 #SBATCH --requeue
 #SBATCH --gres=gpu:a100:1
-#SBATCH --partition=mhong
+#SBATCH --partition=a100-4
 
 source activate metaicl
 nvidia-smi
@@ -37,13 +37,13 @@ echo "Test on oneSimTask"
 task=oneSimTask
 python test.py \
   --dataset rotten_tomatoes --k 16 --split test --seed 100 --use_demonstrations \
-  --test_batch_size 16 --method channel --out_dir checkpoints/channel-metaicl/oneSimTask --global_step 5000
+  --test_batch_size 16 --method channel --out_dir checkpoints/channel-metaicl/oneSimTask --global_step 1000
 
-echo "Test on oneDiffTask"
-task=oneDiffTask
-python test.py \
-  --dataset rotten_tomatoes --k 16 --split test --seed 100 --use_demonstrations \
-  --test_batch_size 16 --method channel --out_dir checkpoints/channel-metaicl/oneDiffTask --global_step 5000
+# echo "Test on oneDiffTask"
+# task=oneDiffTask
+# python test.py \
+#   --dataset rotten_tomatoes --k 16 --split test --seed 100 --use_demonstrations \
+#   --test_batch_size 16 --method channel --out_dir checkpoints/channel-metaicl/oneDiffTask --global_step 1000
 
 # --fp16
 exit
